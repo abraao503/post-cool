@@ -1,32 +1,50 @@
 <template>
-  <div class="about">
-    <div v-for="(post) in posts" :key="post.id">
-      <h1>Titulo:{{ post.title }}</h1>
-      <p>{{ post.body }}</p>
-      <blockquote>Autor: {{ post.userId }}</blockquote>
-    </div>
-  </div>
+  <article class="about">
+    
+    <Post v-for="(post) in posts" :key="post.id"
+      v-bind:title="post.title"
+      v-bind:body="post.body"
+      v-bind:id="post.id"
+      v-bind:aut="post.userId"
+    >
+    </Post>
+  </article>
 </template>
 
 <script>
 import api from '../../services/api';
+import Post from '../../components/Post';
 
 export default {
   name: 'about',
+  components: {
+    Post
+  },
   data() {
     return {
-      posts: []
+      posts: [],
+      comments: {}
     }
   },
-  async mounted() {
-    try {
-      let {data} = await api.get('posts');
-      this.posts = data;
+    async mounted() {
+      try {
+        let { data: postagens } = await api.get('posts');
+        this.posts = postagens;
 
-    }catch (Erro){
-      console.log("erro", Erro);
-    }
+        // for (const post in this.posts) {
+        //   //  let { data: comentarios } = await api.get('/comments?postId='+post.id);
+        //   //  this.comments = comentarios;
 
-  },
+        //    console.log(post.id);
+        // }
+
+        
+        
+      }catch (Erro){
+        console.log("erro", Erro);
+      }
+  
+    },
+  
 }
 </script>

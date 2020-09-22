@@ -23,6 +23,11 @@ const routes = [
     path: '/createpost',
     name: 'CreatePost',
     component: CreatePost
+  },
+  {
+    path: '/userpost',
+    name: 'UserPost',
+    component: () => import(/* webpackChunkName: "about" */ '../views/privado/UserPost.vue')
   }
   
 ]

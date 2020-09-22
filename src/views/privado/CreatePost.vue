@@ -1,28 +1,47 @@
 <template>
   <div class="createpost">
-    <form action="" method="post">
-        <label for="title">Titulo: <input type="text" name="title" id="title"></label>
+    <form ref="form">
+        <label for="title">Titulo:<input type="text" v-model="form.title" id="title" required></label>
         <br>
-        <label for="body">Texto: <textarea name="body" id="body" cols="30" rows="10"></textarea></label>
-
-        <button>Enviar</button>
+        <label for="body">Texto: <textarea v-model="form.body" id="body" cols="30" rows="10" required></textarea></label>
+        <label for="userId"><input type="text" v-model="form.userId" id="userId" hidden></label>
+        <button 
+                v-on:click="createPost(form)"
+              >ok</button>
     </form>
   </div>
 </template>
 
 <script>
-// import api from '../../services/api';
+import api from '../../services/api';
 
 export default {
   name: 'CreatePost',
-  // async createPost(title, body){
-  //   console.log(title, body);
-  //   try {
-  //     await api.post('posts'
-  //     );
-  //   }catch (Erro){
-  //     console.log("erro", Erro);
-  //   }
-  // }
+  data(){
+    return {
+      form: {
+        title: null,
+        body: null,
+        userId: 1,
+      }
+    }
+  },
+  methods: {
+    async createPost({title, body, userId}){
+    console.log(title, body, userId);
+    try {
+        const { data } = await api.post('posts',{
+          title,
+          body,
+          userId
+        });
+        console.log("Post Salvo", data);
+
+      }catch (Erro){
+        console.log("erro", Erro);
+      }
+    }
+  }
+  
 }
 </script>
