@@ -1,13 +1,20 @@
 <template>
     <div class="post">
-         <article class="about">
-            <div>
-                <h1 {{title}}></h1>
-                <p {{body}}></p>
-                <p {{id}}></p>
-                <blockquote {{auth}}></blockquote>
+         <article>
+                <h1>{{title}}</h1>
+                
+                <p>{{id}}</p>
+
+                <p>{{body}}</p>
+                
+                <blockquote>{{userId}}</blockquote>
+
+                <h2>{{user.name}}</h2> 
+            
                 <section>
+                    
                     <h5>Comentários</h5>
+
                     <fieldset>
                         <div v-for="(comentario) in comentarios" :key="comentario.id">
                             <p>{{comentario.name}}</p>
@@ -16,8 +23,8 @@
                         </div>
                     </fieldset>
                 </section>
-            </div>
-        </article>
+            </article>
+        
     </div>
 </template>
 
@@ -28,21 +35,26 @@ export default {
     name: 'Post',
     props: {
         title: String,
+        id: Number,
         body: String,
-        id:  Number,
-        aut: Number,
+        userId: Number
     },
     data () {
         return {
-            comentarios: []
+            comentarios: [],
+            user: {
+                name: ""
+            }
         }
     },
     async mounted() {
       try {
-        let { data: comentarios } = await api.get('/comments?postId='+this.id);
+        let { data: comentarios } = await api.get('comments?postId='+this.id);
         this.comentarios = comentarios;
 
-        
+        let { data: users } = await api.get('users?id='+this.userId);
+        this.user = users[0];
+        console.log(users)
       }catch (Erro){
         console.log("erro", Erro);
       }

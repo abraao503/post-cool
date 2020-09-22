@@ -1,14 +1,15 @@
 <template>
-  <article class="about">
-    
-    <Post v-for="(post) in posts" :key="post.id"
-      v-bind:title="post.title"
-      v-bind:body="post.body"
-      v-bind:id="post.id"
-      v-bind:aut="post.userId"
+  <div class="about">
+    <Post v-for="post in posts" :key="post.id"
+      :title="post.title"
+      :id="post.id"
+      :body="post.body"
+      :userId="post.userId"
     >
     </Post>
-  </article>
+
+  </div>
+    
 </template>
 
 <script>
@@ -22,23 +23,14 @@ export default {
   },
   data() {
     return {
-      posts: [],
-      comments: {}
+      posts: []
     }
   },
     async mounted() {
       try {
-        let { data: postagens } = await api.get('posts');
-        this.posts = postagens;
-
-        // for (const post in this.posts) {
-        //   //  let { data: comentarios } = await api.get('/comments?postId='+post.id);
-        //   //  this.comments = comentarios;
-
-        //    console.log(post.id);
-        // }
-
-        
+        let { data: posts } = await api.get('posts');
+        this.posts = posts;
+        console.log(posts);
         
       }catch (Erro){
         console.log("erro", Erro);
