@@ -14,8 +14,6 @@
 
 export default {
   name: 'CreateAndEditPost',
-  components: {
-    
-  }
+  
 }
 </script>

@@ -1,5 +1,31 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div v-for="(post) in posts" :key="post.id">
+      <h1>Titulo:{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+    </div>
   </div>
 </template>
+
+<script>
+import api from '../../services/api';
+
+export default {
+  name: 'about',
+  data() {
+    return {
+      posts: []
+    }
+  },
+  async mounted() {
+    try {
+      let {data} = await api.get('posts');
+      this.posts = data;
+
+    }catch (Erro){
+      console.log("erro", Erro);
+    }
+
+  },
+}
+</script>
