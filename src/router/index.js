@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import CreateAndEditPost from '../views/cadastrar/CreateAndEditPost.vue'
+import CreatePost from '../views/privado/CreatePost.vue'
 
 Vue.use(VueRouter)
 
@@ -20,9 +20,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/publico/About.vue')
   },
   {
-    path: '/createandeditpost',
-    name: 'CreateAndEditPost',
-    component: CreateAndEditPost
+    path: '/createpost',
+    name: 'CreatePost',
+    component: CreatePost
   }
   
 ]

@@ -1,5 +1,5 @@
 <template>
-  <div class="createandeditpost">
+  <div class="createpost">
     <form action="" method="post">
         <label for="title">Titulo: <input type="text" name="title" id="title"></label>
         <br>
@@ -11,9 +11,18 @@
 </template>
 
 <script>
+// import api from '../../services/api';
 
 export default {
-  name: 'CreateAndEditPost',
-  
+  name: 'CreatePost',
+  // async createPost(title, body){
+  //   console.log(title, body);
+  //   try {
+  //     await api.post('posts'
+  //     );
+  //   }catch (Erro){
+  //     console.log("erro", Erro);
+  //   }
+  // }
 }
 </script>

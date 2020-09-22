@@ -3,6 +3,7 @@
     <div v-for="(post) in posts" :key="post.id">
       <h1>Titulo:{{ post.title }}</h1>
       <p>{{ post.body }}</p>
+      <blockquote>Autor: {{ post.userId }}</blockquote>
     </div>
   </div>
 </template>
