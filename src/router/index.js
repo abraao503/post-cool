@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import CreatePost from '../views/privado/CreatePost.vue'
+import EditPost from '../views/privado/EditPost.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/createpost',
     name: 'CreatePost',
     component: CreatePost
+  },
+  {
+    path: '/editpost',
+    name: 'EditPost',
+    component: EditPost
   },
   {
     path: '/userpost',
