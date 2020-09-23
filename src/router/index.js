@@ -11,23 +11,20 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/home',
     name: 'Home',
     component: Home
   },
   {
     path: '/createpost',
     name: 'CreatePost',
-    component: CreatePost
+    component: CreatePost,
+    meta: { requiresAuth: true }
   },
   {
     path: '/editpost',
     name: 'EditPost',
-    component: EditPost
+    component: EditPost,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
@@ -37,7 +34,8 @@ const routes = [
   {
     path: '/userpost',
     name: 'UserPost',
-    component: UserPost
+    component: UserPost,
+    meta: { requiresAuth: true }
   }
   
 ]
@@ -45,5 +43,21 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth
+    )) {
+    let id = localStorage.getItem('id');
+    if(!id) {
+      next({
+        name: "Login"
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  } 
+});
 
 export default router

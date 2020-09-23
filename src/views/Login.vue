@@ -37,7 +37,7 @@ export default {
           console.log('true'+ this.id);
           
           localStorage.id = JSON.stringify(this.id);
-          this.$router.push('/about');
+          this.$router.push('/');
 
           console.log('local:'+localStorage.id);
 

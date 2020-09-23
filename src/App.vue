@@ -1,17 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Login</router-link> |
-      <router-link to="/home">Home</router-link> |
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/">Home</router-link> |
       <router-link to="/createpost">Cadastrando Post</router-link> |
       <router-link to="/userpost">Meus Post</router-link> |
       <router-link to="/editpost">Editar Post</router-link>
     </div>
-    <h3>
-      Authenticated?
-      <span v-if="auth">yes</span>
-      <span v-if="!auth">no</span>
-    </h3>
 
     <router-view/>
   </div>

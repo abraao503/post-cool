@@ -9,10 +9,10 @@
 		<div class="form-container">
 			<h1>Sing In</h1>
 			<hr/>
-			<form>
-				<input placeholder="Username" />
-				<input placeholder="Password" />
-				<button>Login</button>
+			<form ref="form">
+				<input placeholder="Username" v-model="form.username"/>
+				<input placeholder="Password" v-model="form.password"/>
+				<button v-on:click="submit" type="button">Login</button>
 			</form>
 		</div>
   </div>
@@ -20,9 +20,39 @@
 
 <script>
 //import api from '../../services/api';
+import { required } from 'vuelidate/lib/validators';
 
 export default {
-  name: 'login',
+	name: 'login',
+	
+	data(){
+    return {
+      form: {
+        username: '',
+        password: '',
+      }
+    }
+  },
+
+	validations: {
+    form: { 
+      username: {
+        required,
+      },
+      password: {
+        required,
+      },
+    }
+	},
+	
+	methods: {
+		submit() {
+			if(this.$v.$invalid) {
+				console.log('invalido');
+				return;
+			}
+		}
+	}
 }
 </script>
 

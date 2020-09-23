@@ -71,7 +71,7 @@ export default {
     sair: function (event){
       if(event){
         localStorage.clear();
-        this.$router.push('/');
+        this.$router.push('/login');
       }
     }
     
