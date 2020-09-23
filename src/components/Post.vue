@@ -3,13 +3,13 @@
          <article>
                 <h1>{{title}}</h1>
                 
-                <p>{{id}}</p>
+                <p class="not-visible">{{id}}</p>
 
                 <p>{{body}}</p>
                 
-                <blockquote>{{userId}}</blockquote>
+                <blockquote class="not-visible">{{userId}}</blockquote>
 
-                <h2>{{user.name}}</h2> 
+                <h4>{{user.name}}</h4> 
             
                 <section>
                     
@@ -62,3 +62,9 @@ export default {
     },
 }
 </script>
+
+<style lang="css">
+    .not-visible{
+        display: none;
+    }
+</style>
