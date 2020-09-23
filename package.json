@@ -1,6 +1,7 @@
 {
   "name": "cool-post",
   "version": "0.1.0",
+  "author": "Abraão Rodrigues e Jéssika Aguiar",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
