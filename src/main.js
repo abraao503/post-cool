@@ -4,17 +4,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-<<<<<<< Updated upstream
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
-=======
-import Vuelidate from 'vuelidate'
-
-Vue.use(Vuelidate)
-
->>>>>>> Stashed changes
 Vue.config.productionTip = false
 
 new Vue({

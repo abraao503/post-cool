@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import CreatePost from '../views/privado/CreatePost.vue'
 import EditPost from '../views/privado/EditPost.vue'
+import Login from '../views/publico/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/editpost',
     name: 'EditPost',
     component: EditPost
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/userpost',
