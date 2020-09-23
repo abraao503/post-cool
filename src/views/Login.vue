@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="login">
     <form autocomplete="off" @submit.prevent="login">
       <input type="text" v-model="user.name" id="username" placeholder="username">
       <input type="password" v-model="user.zipcode" id="password" placeholder="password">
@@ -13,7 +13,7 @@
 import api from '../services/api';
 
 export default {
-  name: 'Home',
+  name: 'login',
   data () {
     return {
       user: {},

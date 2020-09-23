@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <button v-on:click="sair">Sair</button>
+  <div class="home">
+     <button v-on:click="sair">Sair</button>
     <Modal 
       :title="actualPost.title"
       :body="actualPost.body"
@@ -22,7 +22,7 @@
         Visualizar
       </b-button>
     </div>
-
+   
   </div>
     
 </template>
@@ -33,7 +33,7 @@ import Post from '../../components/Post';
 import Modal from '../../components/Modal';
 
 export default {
-  name: 'about',
+  name: 'home',
   components: {
     Post,
     Modal
@@ -68,10 +68,13 @@ export default {
 
       this.modalToggleFlag = !this.modalToggleFlag;
     },
-    sair: function (){
-      localStorage.clear();
-      this.$router.push('/');
+    sair: function (event){
+      if(event){
+        localStorage.clear();
+        this.$router.push('/');
+      }
     }
+    
   }
   
 }
