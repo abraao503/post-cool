@@ -31,7 +31,7 @@ const routes = [
     component: EditPost
   },
   {
-    path: '/userpost',
+    path: '/userpost/',
     name: 'UserPost',
     component: () => import(/* webpackChunkName: "about" */ '../views/privado/UserPost.vue')
   }

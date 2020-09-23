@@ -37,8 +37,9 @@ export default {
     }
   },
     async mounted() {
+      let id = localStorage.getItem('id');
       try {
-        let { data: postagens } = await api.get('posts?userId=1');
+        let { data: postagens } = await api.get('posts?userId='+id);
         this.posts = postagens;
 
         

@@ -16,26 +16,39 @@ export default {
   name: 'Home',
   data () {
     return {
-      user: {}
+      user: {},
+      id: null
     }
   },
   methods: {
+    mounted() {
+      if (localStorage.id) {
+        this.id = localStorage.id;
+      }
+    },
+
     login: async function () {
       console.log(this.user);
       try {
         let { data: user } = await api.get('users?name='+this.user.name);
 
         if(user.length && user[0].name === this.user.name && user[0].address.zipcode === this.user.zipcode){
-          console.log('true');
+          this.id = user[0].id;
+          console.log('true'+ this.id);
           
+          localStorage.id = JSON.stringify(this.id);
+          this.$router.push('/about');
+
+          console.log('local:'+localStorage.id);
+
+
         }else{
           alert('Usuario nao existe ou senha incorreto');
         }
       }catch (Erro){
         console.log("Erro", Erro);
       }
-
-    }
+    },
   }
   
 }
