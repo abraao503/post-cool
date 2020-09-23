@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <button v-on:click="sair">Sair</button>
     <Modal 
       :title="actualPost.title"
       :body="actualPost.body"
@@ -66,6 +67,10 @@ export default {
       this.actualPost.body = body;
 
       this.modalToggleFlag = !this.modalToggleFlag;
+    },
+    sair: function (){
+      localStorage.clear();
+      this.$router.push('/');
     }
   }
   

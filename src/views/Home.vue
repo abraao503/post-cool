@@ -41,7 +41,6 @@ export default {
 
           console.log('local:'+localStorage.id);
 
-
         }else{
           alert('Usuario nao existe ou senha incorreto');
         }
