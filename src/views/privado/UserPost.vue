@@ -1,24 +1,24 @@
 <template>
   <div class="userpost">
-     <Navbar></Navbar>
-
-    <Post v-for="post in posts" :key="post.id"
-      :title="post.title"
-      :id="post.id"
-      :body="post.body"
-      :userId="post.userId"
-      :isPrivate="true"
-    >
-    </Post>
-    
-    <!-- <h1></h1>
-    <div v-for="(post) in posts" :key="post.id">
-      <h4>Titulo:{{ post.title }}</h4>
-      <p>{{ post.body }}</p>
-      <blockquote>Autor: {{ user.name }}</blockquote>
+    <Navbar></Navbar>
+    <b-overlay
+          id="overlay-background"
+          show
+          :opacity="0"
+          :blur="blur"
+          rounded="lg"
+        >
+    <div class="container grid">
+      <Post v-for="post in posts" :key="post.id"
+        :title="post.title"
+        :id="post.id"
+        :body="post.body"
+        :userId="post.userId"
+        :isPrivate="true"
+      >
+      </Post>
     </div>
-    <button>Editar</button>
-    <button>Deletar</button> -->
+    </b-overlay>
   </div>
 </template>
 

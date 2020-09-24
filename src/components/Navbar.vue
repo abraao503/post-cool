@@ -22,9 +22,9 @@
           Company: {{user.company.name}} <br/>
         </h6>
         <div class="group-link text-left mt-5">
-          <router-link to="/userpost" class="nav-item color-text"><img :src="require('../assets/img/text_wh.png')">My Posts</router-link>
+          <router-link to="/userpost" class="nav-item color"><img :src="require('../assets/img/text_wh.png')">My Posts</router-link>
           <hr>
-          <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/create_wh.png')">Create Post</router-link>
+          <router-link to="/createpost" class="nav-item color"><img :src="require('../assets/img/create_wh.png')">Create Post</router-link>
           
         </div>     
 
@@ -99,10 +99,10 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .body-sidebar, .color-text {
+  .body-sidebar, .color {
     color: #ffffff;
   }
-  .body-sidebar > .color-text{
+  .body-sidebar > .color{
     text-align: left;
   }
   .body-sidebar h2, .body-sidebar h6{
@@ -116,7 +116,7 @@ export default {
     background-color: #ffffff;
   } 
 
-  .body-sidebar > .group-link > .color-text:hover{
+  .body-sidebar > .group-link > .color:hover{
     color: #ffffff;
   }
 
