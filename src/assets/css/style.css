@@ -5,11 +5,3 @@
     align-items: center;
     justify-content: flex-end;
 }
-
-.btn-post {
-    border-radius: 10px;
-    border: none;
-    width: 37px;
-    height: 33px;
-    margin: 5px;
-}

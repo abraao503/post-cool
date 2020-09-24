@@ -12,8 +12,10 @@
 				<p class="author">{{'Author: ' + user.name}}</p> 
 				
 				<div class="icon-container">
+					<button v-if="isPrivate" class="btn-post icon-edit" v-on:click="handleDeletePost"></button>
+					<button v-if="isPrivate" class="btn-post icon-delete"></button>
 					<button v-b-toggle="'collapse-2'" class="btn-post icon-comentario"></button>
-					<button  v-on:click="viewPost(id, title, body)" class="btn-post icon-modal"></button>
+					<button v-on:click="viewPost(id, title, body)" class="btn-post icon-modal"></button>
 				</div>
 				<section>
 					<b-collapse id="collapse-2">
@@ -45,7 +47,8 @@ export default {
 		title: String,
 		id: Number,
 		body: String,
-		userId: Number
+		userId: Number,
+		isPrivate: Boolean,
 	},
 	data () {
 		return {
@@ -76,6 +79,16 @@ export default {
 
 		toggleVisibilityModal() {
 			this.modalToggleFlag = !this.modalToggleFlag;
+		},
+
+		handleDeletePost(){
+			console.log('oi');
+			try {
+				api.delete(`posts/${this.id}`);
+				
+			} catch(err) {
+				console.log(err);
+			}
 		}
 	}
 }
@@ -128,9 +141,25 @@ export default {
 		background-repeat: no-repeat;
 		background-position: center;
 	}
+
 	.icon-modal{
 		background-color: #007BFF;
 		background-image: url(../assets/img/modal-icon.png);
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+
+	.icon-delete{
+		background-color: #CC6464;
+		background-image: url(../assets/img/delete.png);
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.icon-edit{
+		background-color: #F5A4D5;
+		background-image: url(../assets/img/edit.png);
 		background-repeat: no-repeat;
 		background-position: center;
 	}
@@ -138,5 +167,13 @@ export default {
 	.artigos{
 		display: flex;
 		flex-direction: column;
+	}
+
+	.btn-post {
+    border-radius: 10px;
+    border: none;
+    width: 37px;
+    height: 33px;
+    margin: 5px;
 	}
 </style>

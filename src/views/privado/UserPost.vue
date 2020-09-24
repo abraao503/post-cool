@@ -7,6 +7,7 @@
       :id="post.id"
       :body="post.body"
       :userId="post.userId"
+      :isPrivate="true"
     >
     </Post>
     
