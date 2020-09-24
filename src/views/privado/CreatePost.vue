@@ -3,7 +3,7 @@
     <Navbar></Navbar>
     <Title text="Create Posts"/>
     <form ref="form">
-      <input type="text" v-model="form.title" id="title" placeholder="Title">
+      <input type="text" v-model="form.title" id="title" placeholder="Title" v-model.trim="$v.form.title.$model">
       <br>
       <textarea v-model="form.body" id="body" cols="30" rows="10" placeholder="Enter your text"></textarea>
       <button v-on:click="createPost(form)" type="button">Publish</button>

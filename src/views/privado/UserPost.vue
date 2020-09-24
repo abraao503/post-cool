@@ -1,13 +1,14 @@
 <template>
   <div class="userpost">
     <Navbar></Navbar>
-    <b-overlay
+    <Modal />
+    <!-- <b-overlay
           id="overlay-background"
           show
           :opacity="0"
           :blur="blur"
           rounded="lg"
-        >
+        > -->
     <div class="container grid">
       <Post v-for="post in posts" :key="post.id"
         :title="post.title"
@@ -18,7 +19,7 @@
       >
       </Post>
     </div>
-    </b-overlay>
+    <!-- </b-overlay> -->
   </div>
 </template>
 
@@ -26,12 +27,14 @@
 import api from '../../services/api';
 import Post from '../../components/Post';
 import Navbar from '../../components/Navbar';
+import Modal from '../../components/Modal';
 
 export default {
   name: 'UserPost',
    components: {
     Post,
-    Navbar
+    Navbar,
+    Modal,
   },
   data() {
     return {
@@ -47,7 +50,6 @@ export default {
       try {
         let { data: postagens } = await api.get('posts?userId='+id);
         this.posts = postagens;
-
         
       }catch (Erro){
         console.log("erro", Erro);

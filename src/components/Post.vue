@@ -14,11 +14,11 @@
 				<div class="icon-container">
 					<button v-if="isPrivate" class="btn-post icon-edit" v-on:click="navigateToEdit(id, title, body)"></button>
 					<button v-if="isPrivate" class="btn-post icon-delete" v-on:click="handleDeletePost"></button>
-					<button v-b-toggle="'collapse-2'" class="btn-post icon-comentario"></button>
+					<button v-b-toggle="`collapse-2${id}`" class="btn-post icon-comentario"></button>
 					<button v-on:click="viewPost(id, title, body)" class="btn-post icon-modal"></button>
 				</div>
 				<section>
-					<b-collapse id="collapse-2">
+					<b-collapse :id="`collapse-2${id}`">
 						<b-card>
 							<fieldset>
 								<div v-for="(comentario) in comentarios" :key="comentario.id">
