@@ -4,8 +4,8 @@
       <b-collapse id="nav-collapse " is-nav>
         <b-navbar-nav>
           <router-link to="/" class="nav-item color-text"><img :src="require('../assets/img/home.png')">Home</router-link>
-          <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/text.png')">My Posts</router-link>
-          <router-link to="/userpost" class="nav-item color-text"><img :src="require('../assets/img/create.png')">Create Post</router-link>
+          <router-link to="/userpost" class="nav-item color-text"><img :src="require('../assets/img/text.png')">My Posts</router-link>
+          <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/create.png')">Create Post</router-link>
           <button v-on:click="sair" class="btn-logout color-text"> <img :src="require('../assets/img/logout.png')">Logout</button>
         </b-navbar-nav>
         <router-link to="" class="brand"><img class="img-home" :src="require('../assets/img/Icon-home.png')"></router-link>
