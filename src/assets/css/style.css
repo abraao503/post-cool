@@ -1,7 +1,14 @@
-.title{
+.title {
     font-weight: 900;
 }
-.ordenando-nav{
+
+.ordenando-nav {
     align-items: center;
     justify-content: flex-end;
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+  }

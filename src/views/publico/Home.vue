@@ -1,20 +1,26 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-    <div class=" container grid">
-      <div v-for="post in posts" :key="post.id">
-          <Post 
-        :title="post.title"
-        :id="post.id"
-        :body="post.body"
-        :userId="post.userId"
-        >   
-        </Post>
+     <b-overlay
+          id="overlay-background"
+          show
+          :opacity="0"
+          :blur="blur"
+          rounded="lg"
+        >
+      <div class=" container grid">
+        <div v-for="post in posts" :key="post.id">
+            <Post 
+          :title="post.title"
+          :id="post.id"
+          :body="post.body"
+          :userId="post.userId"
+          >   
+          </Post>
+        </div>
       </div>
-    </div>
-    <Modal />
-    
-   
+      <Modal />
+    </b-overlay>
   </div>
     
 </template>
@@ -62,9 +68,5 @@ export default {
 </script>
 
 <style lang="css">
-  .grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
-  }
+  
 </style>
