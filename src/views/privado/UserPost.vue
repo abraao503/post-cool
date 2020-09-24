@@ -1,7 +1,7 @@
 <template>
   <div class="userpost">
     <Navbar></Navbar>
-    
+    <Modal />
     <div class="container grid">
       <Post v-for="post in posts" :key="post.id"
         :title="post.title"
