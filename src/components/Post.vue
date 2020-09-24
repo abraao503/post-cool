@@ -1,8 +1,8 @@
 <template>
     <div class="post">
-			<article>
-				<h1>{{title}}</h1>
-				
+			<article class="artigos" >
+				<h1 v-if="title.length<30">{{title}}</h1>
+				<h1 v-else>{{title.substring(0, 30) + '...'}}</h1>
 				<p class="not-visible">{{id}}</p>
 
 				<p class="post-body">{{body.substring(0, 50) + '...'}}</p>
@@ -12,22 +12,23 @@
 				<p class="author">{{'Author: ' + user.name}}</p> 
 				
 				<div class="icon-container">
-					<img src="../assets/img/comments.png" alt="comments-icon" />
-					<img src="../assets/img/view.png" alt="view-icon" v-on:click="viewPost(id, title, body)"/>
+					<button v-b-toggle="'collapse-2'" class="btn-post icon-comentario"></button>
+					<button  v-on:click="viewPost(id, title, body)" class="btn-post icon-modal"></button>
 				</div>
 				<section>
-						
-					<!-- <h5>Comentários</h5>
-
-					<fieldset>
-						<div v-for="(comentario) in comentarios" :key="comentario.id">
-							<p>{{comentario.name}}</p>
-							<p>{{comentario.email}}</p>
-							<p>{{comentario.body}}</p>
-						</div>
-					</fieldset> -->
+					<b-collapse id="collapse-2">
+						<b-card>
+							<fieldset>
+								<div v-for="(comentario) in comentarios" :key="comentario.id">
+									<p>{{comentario.name}}</p>
+									<p>{{comentario.email}}</p>
+									<p>{{comentario.body}}</p>
+								</div>
+							</fieldset>
+						</b-card>
+					</b-collapse>
 				</section>
-				</article>
+			</article>
     </div>
 </template>
 
@@ -81,16 +82,19 @@ export default {
 </script>
 
 <style lang="css">
+	
 	.not-visible{
 		display: none;
 	}
 
 	.post {
 		margin-bottom: 20px;
-		width: 270px;
+		width: 354px;
+		height: 320px;
 		padding: 25px 10px;
 		border-radius: 5px;
 		border: 1px solid #D4D2D2;
+		overflow: auto; 
 	}
 
 	.post h1 {
@@ -113,13 +117,26 @@ export default {
 
 	.icon-container {
 		display: flex;
-		justify-content: end;
+		align-self: flex-end;
+		align-items: center;
+		justify-content: flex-end;
 		margin-top: 30px;
 	}
-
-	.icon-container img {
-		width: 32px;
-		margin: 0 4px;
+	.icon-comentario{
+		background-color: #75C310;
+		background-image: url(../assets/img/comentarios.png);
+		background-repeat: no-repeat;
+		background-position: center;
 	}
-
+	.icon-modal{
+		background-color: #007BFF;
+		background-image: url(../assets/img/modal-icon.png);
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	.artigos{
+		display: flex;
+		flex-direction: column;
+	}
 </style>
