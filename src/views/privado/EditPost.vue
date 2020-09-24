@@ -7,11 +7,13 @@
 			<br>
 			<textarea v-model="form.body" id="body" cols="30" rows="10"></textarea>
 			<button v-on:click="editPost" type="button">Edit</button>
+      <span v-if="error">Preecha todos os campos</span>
     </form>
   </div>
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators';
 import api from '../../services/api';
 import Title from '../../components/Title';
 import Navbar from '../../components/Navbar';
@@ -34,6 +36,7 @@ export default {
         title: this.title || 'titulo',
         body: this.body || 'testando',
       },
+      error: false,
     }
   },
 
@@ -45,14 +48,34 @@ export default {
     this.form.body = body;
   },
 
+  validations: {
+    form: { 
+      title: {
+        required,
+      },
+      body: {
+        required,
+      },
+    }
+  },
+
   methods: {
-    async editPost(){
+  async editPost(){
+    this.$v.$touch()
+    
+    if(this.$v.$invalid) {
+      this.error = true;
+      return;
+    }
+
+    this.error = false;
+      
     try {
-			const { data } = await api.patch(`posts/${this.form.id}`,{
-				title: this.form.title,
-				body: this.form.body
-			});
-			console.log("ok", data);
+      const { data } = await api.patch(`posts/${this.form.id}`,{
+        title: this.form.title,
+        body: this.form.body
+      });
+      console.log("ok", data);
       }catch (Erro){
         console.log("erro", Erro);
       }
@@ -91,5 +114,11 @@ export default {
     box-shadow: 2px 2px 5px #A591B6;
     align-self: flex-end;
     width: 260px;
+  }
+
+  .edit-post form span {
+    align-self: flex-end;
+    color: red;
+    margin-right: 35px;
   }
 </style>

@@ -3,10 +3,11 @@
     <Navbar></Navbar>
     <Title text="Create Posts"/>
     <form ref="form">
-      <input type="text" v-model="form.title" id="title" placeholder="Title" v-model.trim="$v.form.title.$model">
+      <input type="text" v-model="form.title" id="title" placeholder="Title">
       <br>
       <textarea v-model="form.body" id="body" cols="30" rows="10" placeholder="Enter your text"></textarea>
       <button v-on:click="createPost(form)" type="button">Publish</button>
+      <span v-if="error">Preecha todos os campos</span>
     </form>
   </div>
 </template>
@@ -30,7 +31,8 @@ export default {
         title: null,
         body: null,
         userId: 1,
-      }
+      },
+      error: false,
     }
   },
   methods: {
@@ -39,9 +41,11 @@ export default {
     this.$v.$touch()
     
     if(this.$v.$invalid) {
-      console.log('invalido');
+      this.error = true;
       return;
     }
+
+    this.error = false;
 
     try {
       const { data } = await api.post('posts',{
@@ -100,5 +104,11 @@ export default {
     box-shadow: 2px 2px 5px #A591B6;
     align-self: flex-end;
     width: 260px;
+  }
+
+  .create-post form span {
+    align-self: flex-end;
+    color: red;
+    margin-right: 35px;
   }
 </style>
