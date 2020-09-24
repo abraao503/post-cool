@@ -1,17 +1,19 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-    
-    <Modal />
-    <div v-for="post in posts" :key="post.id">
-      <Post 
+    <div class=" container grid">
+      <div v-for="post in posts" :key="post.id">
+          <Post 
         :title="post.title"
         :id="post.id"
         :body="post.body"
         :userId="post.userId"
-      >
-      </Post>
+        >   
+        </Post>
+      </div>
     </div>
+    <Modal />
+    
    
   </div>
     
@@ -58,3 +60,11 @@ export default {
   
 }
 </script>
+
+<style lang="css">
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+  }
+</style>
