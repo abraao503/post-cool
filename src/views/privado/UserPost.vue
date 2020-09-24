@@ -1,5 +1,7 @@
 <template>
   <div class="userpost">
+     <Navbar></Navbar>
+
     <Post v-for="post in posts" :key="post.id"
       :title="post.title"
       :id="post.id"
@@ -22,15 +24,18 @@
 <script>
 import api from '../../services/api';
 import Post from '../../components/Post';
+import Navbar from '../../components/Navbar';
 
 export default {
   name: 'UserPost',
    components: {
-    Post
+    Post,
+    Navbar
   },
   data() {
     return {
       posts: [],
+      
       // user: {
       //   name: ""
       // }

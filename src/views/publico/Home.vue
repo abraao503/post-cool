@@ -1,7 +1,8 @@
 <template>
   <div class="home">
+    <Navbar></Navbar>
+    
     <Modal />
-    <button v-on:click="sair">Sair</button>
     <div v-for="post in posts" :key="post.id">
       <Post 
         :title="post.title"
@@ -20,12 +21,14 @@
 import api from '../../services/api';
 import Post from '../../components/Post';
 import Modal from '../../components/Modal';
+import Navbar from '../../components/Navbar';
 
 export default {
   name: 'home',
   components: {
     Post,
-    Modal
+    Modal,
+    Navbar
   },
   data() {
     return {

@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/">Home</router-link> |
-      <router-link to="/createpost">Cadastrando Post</router-link> |
-      <router-link to="/userpost">Meus Post</router-link> |
-      <router-link to="/editpost">Editar Post</router-link>
-    </div> -->
-
-    <router-view/>
+      <router-view/>
   </div>
 </template>
+
+<script>
+
+
+export default {
+  name: 'App',
+ 
+}
+</script>
 
 <style>
 
