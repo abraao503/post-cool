@@ -1,6 +1,7 @@
 {
   "name": "cool-post",
   "version": "0.1.0",
+  "author": "Abraão Rodrigues e Jéssika Aguiar",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,6 +16,7 @@
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vuelidate": "^0.7.5",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -26,7 +28,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-svg-loader": "^0.16.0",
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,
