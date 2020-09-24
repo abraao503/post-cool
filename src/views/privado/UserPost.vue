@@ -1,14 +1,7 @@
 <template>
   <div class="userpost">
     <Navbar></Navbar>
-    <Modal />
-    <!-- <b-overlay
-          id="overlay-background"
-          show
-          :opacity="0"
-          :blur="blur"
-          rounded="lg"
-        > -->
+    
     <div class="container grid">
       <Post v-for="post in posts" :key="post.id"
         :title="post.title"
@@ -19,7 +12,6 @@
       >
       </Post>
     </div>
-    <!-- </b-overlay> -->
   </div>
 </template>
 
