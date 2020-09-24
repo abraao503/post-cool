@@ -12,19 +12,21 @@
       </b-collapse>
     </b-navbar>
      <b-sidebar id="sidebar-variant" shadow>
-      <div class="text-center px-3 py-2">
-        <h2>Nome</h2>
+      <div class="text-center px-3 py-2 body-sidebar">
+        <h2>{{user.name}}</h2>
         <img :src="require('../assets/img/profile.png')">
-        <h4>
-          Email<br/>
-          Website:<br/>
-          City: <br/>
-          Company: <br/>
-        </h4>
-                
-        <router-link to="/userpost" class="nav-item color-text"><img :src="require('../assets/img/text.png')">My Posts</router-link>
-        <hr>
-        <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/create.png')">Create Post</router-link>
+        <h6>
+          Email: {{user.email}}<br/>
+          Website: {{user.website}}<br/>
+          City: {{user.address.city}}<br/>
+          Company: {{user.company.name}} <br/>
+        </h6>
+        <div class="group-link text-left mt-5">
+          <router-link to="/userpost" class="nav-item color-text"><img :src="require('../assets/img/text_wh.png')">My Posts</router-link>
+          <hr>
+          <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/create_wh.png')">Create Post</router-link>
+          
+        </div>     
 
       </div>
     </b-sidebar>
@@ -35,16 +37,30 @@
 
 export default {
   name: 'navbar',
+  data () {
+    return {
+      user: {
+        address: [],
+        company: []
+      } 
+    }
+  },
+
   props:{
     postTitle: String
   },
+  async mounted() {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.user = user;
+  },
   methods: {
-     sair: function (event){
-      if(event){
-        localStorage.clear();
-        this.$router.push('/login');
-      }
-    }
+      sair: function (event){
+        if(event){
+          localStorage.clear();
+          this.$router.push('/login');
+        }
+      },
+      
   }
 }
 </script>
@@ -77,4 +93,31 @@ export default {
     background-color: #A591B6 !important;
     color: #ffffff;
   }
+  .body-sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .body-sidebar, .color-text {
+    color: #ffffff;
+  }
+  .body-sidebar > .color-text{
+    text-align: left;
+  }
+  .body-sidebar h2, .body-sidebar h6{
+    line-height: 1.6;
+  }
+
+  .group-link{
+    width: 250px;
+  }
+  .body-sidebar > .group-link > hr{
+    background-color: #ffffff;
+  } 
+
+  .body-sidebar > .group-link > .color-text:hover{
+    color: #ffffff;
+  }
+
 </style>

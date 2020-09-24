@@ -45,18 +45,15 @@ export default {
     },
 
     login: async function () {
-      console.log(this.user);
       try {
         let { data: user } = await api.get('users?name='+this.user.name);
 
         if(user.length && user[0].name === this.user.name && user[0].address.zipcode === this.user.zipcode){
           this.id = user[0].id;
-          console.log('true'+ this.id);
           
           localStorage.id = JSON.stringify(this.id);
+          localStorage.user = JSON.stringify(user[0]);
           this.$router.push('/');
-
-          console.log('local:'+localStorage.id);
 
         }else{
           alert('Usuario nao existe ou senha incorreto');
