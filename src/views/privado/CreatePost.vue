@@ -101,10 +101,4 @@ export default {
     align-self: flex-end;
     width: 260px;
   }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px
-  }
 </style>

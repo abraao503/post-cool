@@ -12,8 +12,8 @@
 				<p class="author">{{'Author: ' + user.name}}</p> 
 				
 				<div class="icon-container">
-					<button v-if="isPrivate" class="btn-post icon-edit" v-on:click="handleDeletePost"></button>
-					<button v-if="isPrivate" class="btn-post icon-delete"></button>
+					<button v-if="isPrivate" class="btn-post icon-edit" v-on:click="navigateToEdit(id, title, body)"></button>
+					<button v-if="isPrivate" class="btn-post icon-delete" v-on:click="handleDeletePost"></button>
 					<button v-b-toggle="'collapse-2'" class="btn-post icon-comentario"></button>
 					<button v-on:click="viewPost(id, title, body)" class="btn-post icon-modal"></button>
 				</div>
@@ -37,6 +37,7 @@
 <script>
 import api from '../services/api';
 import store from '../store';
+import router from '../router'
 
 export default {
 	name: 'Post',
@@ -81,6 +82,11 @@ export default {
 			this.modalToggleFlag = !this.modalToggleFlag;
 		},
 
+		navigateToEdit(id, title, body) {
+			store.commit('newPost', {id, title, body});
+			router.push({name: 'EditPost'});
+		},
+
 		handleDeletePost(){
 			console.log('oi');
 			try {
@@ -95,7 +101,6 @@ export default {
 </script>
 
 <style lang="css">
-	
 	.not-visible{
 		display: none;
 	}
