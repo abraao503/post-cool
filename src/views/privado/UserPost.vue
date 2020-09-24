@@ -20,6 +20,7 @@ import api from '../../services/api';
 import Post from '../../components/Post';
 import Navbar from '../../components/Navbar';
 import Modal from '../../components/Modal';
+import store from '../../store';
 
 export default {
   name: 'UserPost',
@@ -39,15 +40,27 @@ export default {
   },
     async mounted() {
       let id = localStorage.getItem('id');
+
+      if (store.getters.toastStatus) {
+        const toastData = store.getters.toast;
+
+        this.$bvToast.toast(toastData.body, {
+          title: toastData.title,
+          variant: toastData.color,
+          solid: true
+        })
+        store.commit('changeStatus', false);
+      }
+
+
       try {
         let { data: postagens } = await api.get('posts?userId='+id);
         this.posts = postagens;
-        
+
       }catch (Erro){
         console.log("erro", Erro);
       }
-  
-    },
-  
+
+    }
 }
 </script>

@@ -31,6 +31,8 @@
 					</b-collapse>
 				</section>
 			</article>
+
+
     </div>
 </template>
 
@@ -53,6 +55,7 @@ export default {
 	},
 	data () {
 		return {
+			msg: String,
 			comentarios: [],
 			user: {
 				name: ""
@@ -86,16 +89,25 @@ export default {
 			store.commit('newPost', {id, title, body});
 			router.push({name: 'EditPost'});
 		},
+		makeToast(variant = null) {
+			this.$bvToast.toast('Post deletado com sucesso', {
+				title: `Deletar`,
+				variant: variant,
+				solid: true
+			})
+		},
 
 		handleDeletePost(){
 			console.log('oi');
 			try {
 				api.delete(`posts/${this.id}`);
+				this.makeToast('danger');
 				
 			} catch(err) {
 				console.log(err);
 			}
-		}
+		},
+		
 	}
 }
 </script>

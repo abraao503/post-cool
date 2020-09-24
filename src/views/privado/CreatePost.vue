@@ -18,6 +18,8 @@ import api from '../../services/api';
 
 import Navbar from '../../components/Navbar';
 import Title from '../../components/Title';
+import store from '../../store'
+import router from '../../router'
 
 export default {
   name: 'CreatePost',
@@ -53,6 +55,13 @@ export default {
         body,
         userId
       });
+      store.commit('changeStatus', true);
+      store.commit('changeToastData', {
+        title: 'Criado',
+        body: 'Criado com Sucesso',
+        color: 'info'
+      })
+      router.push('/userpost')
       console.log("Post Salvo", data);
 
       }catch (Erro){

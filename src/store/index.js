@@ -10,6 +10,13 @@ export default new Vuex.Store({
       id: 0,
       title: '',
       body: '',
+    },
+    
+    toast: {
+      status: false,
+      title: '',
+      body: '',
+      color: '',
     }
   },
   mutations: {
@@ -19,6 +26,16 @@ export default new Vuex.Store({
 
     newPost(state, post) {
       state.post = post;
+    },
+
+    changeStatus(state, status) {
+      state.toast.status = status;
+    },
+
+    changeToastData(state, data) {
+      state.toast.title = data.title;
+      state.toast.body = data.body;
+      state.toast.color = data.color;
     }
   },
   getters: {
@@ -28,7 +45,16 @@ export default new Vuex.Store({
 
     postData: state => {
       return state.post;
+    },
+
+    toastStatus: state => {
+      return state.toast.status;
+    },
+    
+    toast: state => {
+      return state.toast;
     }
+
   },
   actions: {
   },

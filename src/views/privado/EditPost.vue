@@ -18,6 +18,7 @@ import api from '../../services/api';
 import Title from '../../components/Title';
 import Navbar from '../../components/Navbar';
 import store from '../../store';
+import router from '../../router';
 
 export default {
   name: 'EditPost',
@@ -46,6 +47,9 @@ export default {
     this.form.id = id;
     this.form.title = title;
     this.form.body = body;
+
+   
+
   },
 
   validations: {
@@ -75,7 +79,17 @@ export default {
         title: this.form.title,
         body: this.form.body
       });
+      
       console.log("ok", data);
+
+      store.commit('changeStatus', true);
+      store.commit('changeToastData', {
+        title: 'Editado',
+        body: 'Editado com Sucesso',
+        color: 'warning'
+      });
+      router.push('/userpost');
+
       }catch (Erro){
         console.log("erro", Erro);
       }
