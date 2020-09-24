@@ -11,7 +11,7 @@
 </template>
 
 <script>
-//import api from '../services/api';
+import api from '../services/api';
 import store from '../store';
 
 export default {
@@ -42,22 +42,22 @@ export default {
 		},
 		
 		watch: {
-			// visible: async function () {
-			// 	try {
-			// 		let { data: comments } = await api.get('comments?postId='+this.id);
-			// 		console.log(comments);
-			// 		this.comments = comments;
-			// 	}catch (Erro){
-			// 		console.log("erro", Erro);
-			// 	}
-			// }
-			visible () {
+			
+			async visible ()  {
 				console.log(store.getters.postData);
 				const { id, title, body } = store.getters.postData;
 
 				this.id = id;
 				this.title = title;
 				this.body = body;
+
+				try {
+					let { data: comments } = await api.get('comments?postId='+this.id);
+					console.log(comments);
+					this.comments = comments;
+				}catch (Erro){
+					console.log("erro", Erro);
+				}
 
 				this.toggleModal();
 			}

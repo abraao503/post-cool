@@ -8,16 +8,26 @@
           <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/create.png')">Create Post</router-link>
           <button v-on:click="sair" class="btn-logout color-text"> <img :src="require('../assets/img/logout.png')">Logout</button>
         </b-navbar-nav>
-        <router-link to="" class="brand"><img class="img-home" :src="require('../assets/img/Icon-home.png')"></router-link>
+        <router-link to="" class="brand" v-b-toggle.sidebar-variant><img class="img-home" :src="require('../assets/img/Icon-home.png')"></router-link>
       </b-collapse>
     </b-navbar>
-    <!-- <router-link to="/login">Login</router-link> |
-      <router-link to="/">Home</router-link> |
-      <router-link to="/createpost">Cadastrando Post</router-link> |
-      <router-link to="/userpost">Meus Post</router-link> |
-      <router-link to="/editpost">Editar Post</router-link>
-     
-     <button v-on:click="sair">logout</button> -->
+     <b-sidebar id="sidebar-variant" shadow>
+      <div class="text-center px-3 py-2">
+        <h2>Nome</h2>
+        <img :src="require('../assets/img/profile.png')">
+        <h4>
+          Email<br/>
+          Website:<br/>
+          City: <br/>
+          Company: <br/>
+        </h4>
+                
+        <router-link to="/userpost" class="nav-item color-text"><img :src="require('../assets/img/text.png')">My Posts</router-link>
+        <hr>
+        <router-link to="/createpost" class="nav-item color-text"><img :src="require('../assets/img/create.png')">Create Post</router-link>
+
+      </div>
+    </b-sidebar>
   </div>
 </template>
 
@@ -62,5 +72,9 @@ export default {
     background-color: #ffffff;
     border: none;
     margin: 5px;
+  }
+  #sidebar-variant{
+    background-color: #A591B6 !important;
+    color: #ffffff;
   }
 </style>
