@@ -1,12 +1,7 @@
 <template>
   <div class="home">
-     <button v-on:click="sair">Sair</button>
-    <Modal 
-      :title="actualPost.title"
-      :body="actualPost.body"
-      :id="actualPost.id"
-      :visible="modalToggleFlag"
-    />
+    <Modal />
+    <button v-on:click="sair">Sair</button>
     <div v-for="post in posts" :key="post.id">
       <Post 
         :title="post.title"
@@ -15,12 +10,6 @@
         :userId="post.userId"
       >
       </Post>
-      <b-button 
-        v-b-modal.post-modal v
-        v-on:click="setActualPost(post.id, post.title, post.body)"
-      >
-        Visualizar
-      </b-button>
     </div>
    
   </div>
@@ -41,12 +30,6 @@ export default {
   data() {
     return {
       posts: [],
-      modalToggleFlag: false,
-      actualPost: {
-        id: 0,
-        title: '',
-        body: ''
-      }
     }
   },
   async mounted() {
@@ -61,13 +44,6 @@ export default {
   },
 
   methods: {
-    setActualPost(id, title, body) {
-      this.actualPost.id = id;
-      this.actualPost.title = title;
-      this.actualPost.body = body;
-
-      this.modalToggleFlag = !this.modalToggleFlag;
-    },
     sair: function (event){
       if(event){
         localStorage.clear();
