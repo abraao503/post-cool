@@ -1,13 +1,6 @@
 <template>
   <div class="home">
     <Navbar></Navbar>
-     <b-overlay
-          id="overlay-background"
-          show
-          :opacity="0"
-          :blur="blur"
-          rounded="lg"
-        >
       <div class=" container grid">
         <div v-for="post in posts" :key="post.id">
             <Post 
@@ -20,7 +13,6 @@
         </div>
       </div>
       <Modal />
-    </b-overlay>
   </div>
     
 </template>
@@ -40,6 +32,7 @@ export default {
   },
   data() {
     return {
+      show: false,
       posts: [],
     }
   },

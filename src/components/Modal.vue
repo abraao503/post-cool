@@ -1,10 +1,14 @@
 <template>
 	<div>
-		<b-modal id="post-modal" :title="title" ref="my-modal">
+		<b-modal id="post-modal" :title="title" size="xl"  ref="my-modal" scrollable>
 			<p class="my-4">{{body}}</p>
+			<h6>Comentários</h6>
+			<hr>
 			<div v-for="(comment) in comments" :key="comment.id">
-				<h5>{{comment.name}}</h5>
-				<p>{{comment.body}}</p>
+				<fieldset class="bg-silver">
+					<h5>{{comment.name}}</h5>
+					<p>{{comment.body}}</p>
+				</fieldset>
 			</div>
 		</b-modal>
 	</div>
@@ -65,3 +69,12 @@ export default {
 
 }
 </script>
+
+<style lang="css">
+	.bg-silver{
+		background-color: #caa9d691;
+		margin: 15px;
+		padding: 10px;
+		border-radius: 8px;
+	}
+</style>
