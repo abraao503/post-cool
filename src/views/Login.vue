@@ -77,6 +77,7 @@ export default {
     background-repeat: no-repeat;
     background-position: left;
     background-size: 1114px;
+    position: fixed;
   }
   .pessoas{
     width: 439px;

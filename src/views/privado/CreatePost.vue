@@ -1,5 +1,6 @@
 <template>
   <div class="createpost">
+    <Navbar></Navbar>
     <form ref="form">
         <label for="title">Titulo:<input type="text" v-model="form.title" id="title" required></label>
         <br>
@@ -14,8 +15,13 @@
 import { required } from 'vuelidate/lib/validators';
 import api from '../../services/api';
 
+import Navbar from '../../components/Navbar';
+
 export default {
   name: 'CreatePost',
+  components:{
+    Navbar
+  },
   data(){
     return {
       form: {

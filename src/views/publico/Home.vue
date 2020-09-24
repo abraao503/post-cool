@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-     <button v-on:click="sair">Sair</button>
+    <Navbar></Navbar>
+    
     <Modal 
       :title="actualPost.title"
       :body="actualPost.body"
@@ -31,12 +32,14 @@
 import api from '../../services/api';
 import Post from '../../components/Post';
 import Modal from '../../components/Modal';
+import Navbar from '../../components/Navbar';
 
 export default {
   name: 'home',
   components: {
     Post,
-    Modal
+    Modal,
+    Navbar
   },
   data() {
     return {

@@ -1,5 +1,6 @@
 <template>
   <div class="editPost">
+     <Navbar></Navbar>
     <form ref="form">
 			<label for="title">Titulo:<input type="text" v-model="form.title" id="title" required></label>
 			<br>
@@ -12,8 +13,13 @@
 <script>
 import api from '../../services/api';
 
+import Navbar from '../../components/Navbar';
+
 export default {
   name: 'EditPost',
+  components: {
+    Navbar
+  },
   props: {
 		id: Number,
 		title: String,
